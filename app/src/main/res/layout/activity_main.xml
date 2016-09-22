@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:actualImageUri="http://imglf0.ph.126.net/OCrWlAl1wpCIhNoLDZaNNQ==/6630877550188035249.jpg"/>
+        <master.flame.danmaku.ui.widget.DanmakuView
+            android:id="@+id/sv_danmaku"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/sv_danmaku"
+            android:layout_alignEnd="@id/sv_danmaku"
+            android:layout_alignRight="@id/sv_danmaku"
+            android:layout_margin="15dp"
+            android:textSize="14sp"
+            android:text="普通弹幕" />
+
+        <Button
+            android:id="@+id/add_multi_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/sv_danmaku"
+            android:layout_toLeftOf="@id/add_btn"
+            android:layout_toStartOf="@id/add_btn"
+            android:layout_margin="15dp"
+            android:textSize="14sp"
+            android:text="图文弹幕" />
+
+        <org.alexwan.dfmsample.widget.DraweeTextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_alignBottom="@id/sv_danmaku"
+            android:layout_alignLeft="@id/sv_danmaku"
+            android:layout_alignStart="@id/sv_danmaku"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</layout>
