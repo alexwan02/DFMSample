@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.alexwan.dfmsample.databinding.ActivityMainBinding;
 import org.alexwan.dfmsample.widget.DanmakuDraweeSpan;
 
@@ -47,9 +49,11 @@ import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
 import master.flame.danmaku.danmaku.parser.IDataSource;
 import master.flame.danmaku.danmaku.parser.android.BiliDanmukuParser;
 
+import static android.R.id.list;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding mMainBinding;
     private DanmakuContext mDanmakuContext;
     private BaseDanmakuParser mParser;
@@ -76,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 .setMaximumLines(maxLinesPair)       // 弹幕最大行数
                 .preventOverlapping(overlappingEnablePair); // 防止弹幕重叠
 
-        mParser = createParser(this.getResources().openRawResource(R.raw.comments)); // 创建弹幕解析器
-
+        //mParser = createParser(this.getResources().openRawResource(R.raw.comments)); // 创建弹幕解析器
+        mParser = customParser();
         mMainBinding.svDanmaku.setCallback(new DrawHandler.Callback() {
             @Override
             public void prepared() {
@@ -269,10 +273,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void releaseResource(BaseDanmaku danmaku) {
             //
-//            if(danmaku != null){
-//                danmaku.text = "";
-//
-//            }
+            if(danmaku != null){
+                danmaku.text = "";
+            }
         }
     };
 
@@ -329,6 +332,38 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         BaseDanmakuParser parser = new BiliDanmukuParser();
+        IDataSource<?> dataSource = loader.getDataSource();
+        parser.load(dataSource);
+        return parser;
+    }
+
+    /**
+     * 自定义解析器
+     * @param stream stream
+     * @return BaseDanmakuParser
+     */
+    private BaseDanmakuParser customParser(InputStream stream){
+        ILoader loader = SimpleDanmakuLoader.instance();
+        try {
+            loader.load(stream);
+        } catch (IllegalDataException e) {
+            Log.e(TAG , "customParser : stream error = " , e);
+        }
+        BaseDanmakuParser parser = new SimpleDanmakuParser();
+        IDataSource<?> dataSource = loader.getDataSource();
+        parser.load(dataSource);
+        return parser;
+    }
+
+    private BaseDanmakuParser customParser(){
+        ILoader loader = SimpleDanmakuLoader.instance();
+        try {
+            loader.load("ddd");
+            Log.i(TAG , "customParser : json = " + new Gson().toJson(list) );
+        } catch (IllegalDataException e) {
+            Log.e(TAG , "customParser : json = " + new Gson().toJson(list) + " ; error = " , e);
+        }
+        BaseDanmakuParser parser = new SimpleDanmakuParser();
         IDataSource<?> dataSource = loader.getDataSource();
         parser.load(dataSource);
         return parser;
