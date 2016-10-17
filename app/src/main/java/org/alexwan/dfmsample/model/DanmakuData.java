@@ -1,4 +1,4 @@
-package org.alexwan.dfmsample;
+package org.alexwan.dfmsample.model;
 
 /**
  * DanmakuData

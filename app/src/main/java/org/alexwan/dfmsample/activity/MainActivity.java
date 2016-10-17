@@ -1,4 +1,4 @@
-package org.alexwan.dfmsample;
+package org.alexwan.dfmsample.activity;
 
 import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
@@ -25,7 +25,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import org.alexwan.dfmsample.R;
 import org.alexwan.dfmsample.databinding.ActivityMainBinding;
+import org.alexwan.dfmsample.simplesource.SimpleDanmakuLoader;
+import org.alexwan.dfmsample.simplesource.SimpleDanmakuParser;
 import org.alexwan.dfmsample.widget.DanmakuDraweeSpan;
 
 import java.io.InputStream;

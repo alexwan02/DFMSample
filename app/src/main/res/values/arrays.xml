@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="danmaku_samples">
+        <item>简单文字弹幕</item>
+        <item>图文混排弹幕(单行文字)</item>
+        <item>图文混排弹幕(双行文字)</item>
+    </string-array>
+</resources>

@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.alexwan.dfmsample" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.alexwan.dfmsample">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:name=".base.CApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".CApplication"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:name=".activity.EntryActivity"
             android:configChanges="keyboard|screenSize|orientation"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/danmaku_sample"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="keyboard|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter tools:ignore="GoogleAppIndexingWarning">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

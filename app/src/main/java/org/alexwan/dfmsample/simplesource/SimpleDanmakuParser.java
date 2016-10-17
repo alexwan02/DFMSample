@@ -1,10 +1,12 @@
-package org.alexwan.dfmsample;
+package org.alexwan.dfmsample.simplesource;
 
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.alexwan.dfmsample.model.DanmakuData;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -51,7 +53,7 @@ public class SimpleDanmakuParser extends BaseDanmakuParser{
         }
         BaseDanmaku item = mContext.mDanmakuFactory.createDanmaku(data.getType() , mContext);
         if(item != null){
-            item.time = (long) (data.getTime() * 1000);
+            item.setTime((long) (data.getTime() * 1000));
             item.textSize = data.getFontSize();
             item.textColor = data.getFontColor() | 0xFF000000 ;
             DanmakuUtils.fillText(item , data.getContent());

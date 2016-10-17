@@ -1,10 +1,12 @@
-package org.alexwan.dfmsample;
+package org.alexwan.dfmsample.simplesource;
 
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+
+import org.alexwan.dfmsample.model.DanmakuData;
 
 import java.io.File;
 import java.io.FileInputStream;

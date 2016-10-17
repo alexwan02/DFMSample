@@ -1,4 +1,4 @@
-package org.alexwan.dfmsample;
+package org.alexwan.dfmsample.simplesource;
 
 import com.facebook.common.util.UriUtil;
 
