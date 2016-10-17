@@ -111,15 +111,16 @@ public class MainActivity extends AppCompatActivity {
 
         mMainBinding.svDanmaku.setOnDanmakuClickListener(new IDanmakuView.OnDanmakuClickListener() {
             @Override
-            public void onDanmakuClick(BaseDanmaku latest) {
+            public boolean onViewClick(IDanmakuView view) {
                 // 点击的弹幕
-                Log.d("DFM", "onDanmakuClick text:" + latest.text);
+                return false;
             }
 
             @Override
-            public void onDanmakuClick(IDanmakus danmakus) {
+            public boolean onDanmakuClick(IDanmakus danmakus) {
                 // 弹幕
                 Log.d("DFM", "onDanmakuClick danmakus size:" + danmakus.size());
+                return false;
             }
         });
 
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 baseDanmaku.isLive = false;                // 是否是直播弹幕
                 baseDanmaku.underlineColor = 0;            // 0表示无下划线
                 // baseDanmaku.lines = new String[]{"两行弹幕第1行弹幕" , "两行弹幕第2行弹幕"};
-                baseDanmaku.time = mMainBinding.svDanmaku.getCurrentTime(); // 弹幕出现的时间
+                baseDanmaku.setTime(mMainBinding.svDanmaku.getCurrentTime()); // 弹幕出现的时间
                 mMainBinding.svDanmaku.addDanmaku(baseDanmaku);
             }
         });
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 baseDanmaku.isLive = false;                // 是否是直播弹幕
                 baseDanmaku.underlineColor = 0;            // 0表示无下划线
                 // baseDanmaku.lines = new String[]{"两行弹幕第1行弹幕" , "两行弹幕第2行弹幕"};
-                baseDanmaku.time = mMainBinding.svDanmaku.getCurrentTime(); // 弹幕出现的时间
+                baseDanmaku.setTime(mMainBinding.svDanmaku.getCurrentTime());// 弹幕出现的时间
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
