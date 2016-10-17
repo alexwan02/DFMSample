@@ -6,11 +6,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.desmond.ripple.RippleCompat;
 
 import org.alexwan.dfmsample.R;
+import org.alexwan.dfmsample.activity.TextDanmakuActivity;
 import org.alexwan.dfmsample.databinding.ItemSimpleBinding;
 
 import java.util.List;
@@ -43,6 +45,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
         holder.setValues(datas.get(position));
+
     }
 
     @Override
@@ -61,6 +64,24 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.SimpleView
             super(binding.getRoot());
             mBinding = binding;
             RippleCompat.apply(binding.getRoot(), ContextCompat.getColor(binding.getRoot().getContext() , R.color.color_white));
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    switch (position){
+                        case 0:
+                            TextDanmakuActivity.start(mBinding.getRoot().getContext());
+                            break;
+                        case 1:
+
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                    }
+                }
+            });
         }
 
         void setValues(String name) {

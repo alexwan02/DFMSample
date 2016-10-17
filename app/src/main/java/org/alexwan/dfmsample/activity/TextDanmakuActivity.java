@@ -1,5 +1,7 @@
 package org.alexwan.dfmsample.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -55,11 +57,16 @@ import master.flame.danmaku.danmaku.parser.android.BiliDanmukuParser;
 import static android.R.id.list;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class TextDanmakuActivity extends AppCompatActivity {
+    private static final String TAG = TextDanmakuActivity.class.getSimpleName();
     private ActivityMainBinding mMainBinding;
     private DanmakuContext mDanmakuContext;
     private BaseDanmakuParser mParser;
+
+    public static void start(Context context){
+        Intent intent = new Intent(context , TextDanmakuActivity.class);
+        context.startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
