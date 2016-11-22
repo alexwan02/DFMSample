@@ -90,8 +90,8 @@ public class TextDanmakuActivity extends AppCompatActivity {
                 .setMaximumLines(maxLinesPair)       // 弹幕最大行数
                 .preventOverlapping(overlappingEnablePair); // 防止弹幕重叠
 
-        //mParser = createParser(this.getResources().openRawResource(R.raw.comments)); // 创建弹幕解析器
-        mParser = customParser();
+        mParser = createParser(this.getResources().openRawResource(R.raw.comments)); // 创建弹幕解析器
+        //  mParser = customParser();
         mMainBinding.svDanmaku.setCallback(new DrawHandler.Callback() {
             @Override
             public void prepared() {
@@ -155,10 +155,10 @@ public class TextDanmakuActivity extends AppCompatActivity {
                 //
                 BaseDanmaku baseDanmaku = mDanmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_FIX_BOTTOM);
                 baseDanmaku.text = "简单的一条弹幕" + System.nanoTime(); // 文本内容
-                baseDanmaku.textSize = 25f * (mParser.getDisplayer().getDensity() - 0.6f); // 字体大小
-                baseDanmaku.textColor = Color.RED;         // 字体颜色
-                baseDanmaku.textShadowColor = Color.WHITE; // 描边颜色
-                baseDanmaku.borderColor = Color.RED;       // 弹幕边框颜色
+                baseDanmaku.textSize = 50f * (mParser.getDisplayer().getDensity() - 0.6f); // 字体大小
+                baseDanmaku.textColor = 16711680;         // 字体颜色
+                baseDanmaku.textShadowColor = Color.BLACK; // 描边颜色
+                baseDanmaku.borderColor = 0;       // 弹幕边框颜色
                 baseDanmaku.padding = 5;                   // 内边距
                 baseDanmaku.priority = 0;                  // 弹幕优先级,0为低优先级
                 baseDanmaku.isLive = false;                // 是否是直播弹幕
@@ -174,14 +174,14 @@ public class TextDanmakuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final BaseDanmaku baseDanmaku = mDanmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
                 baseDanmaku.text = buildText(); // 文本内容
-                baseDanmaku.textSize = 25f * (mParser.getDisplayer().getDensity() - 0.6f); // 字体大小
-                baseDanmaku.textColor = Color.RED;         // 字体颜色
-                baseDanmaku.textShadowColor = Color.WHITE; // 描边颜色
-                // baseDanmaku.borderColor = Color.RED;       // 弹幕边框颜色
-                baseDanmaku.padding = 5;                   // 内边距
-                baseDanmaku.priority = 0;                  // 弹幕优先级,0为低优先级
-                baseDanmaku.isLive = false;                // 是否是直播弹幕
-                baseDanmaku.underlineColor = 0;            // 0表示无下划线
+                baseDanmaku.textSize = 50f * (mParser.getDisplayer().getDensity() - 0.6f); // 字体大小
+                baseDanmaku.textColor = 16711680;   // 字体颜色
+                baseDanmaku.textShadowColor = Color.BLACK;    // 描边颜色
+                baseDanmaku.borderColor = 0;        // 弹幕边框颜色
+                baseDanmaku.padding = 5;            // 内边距
+                baseDanmaku.priority = 0;           // 弹幕优先级,0为低优先级
+                baseDanmaku.isLive = false;         // 是否是直播弹幕
+                baseDanmaku.underlineColor = 0;     // 0表示无下划线
                 // baseDanmaku.lines = new String[]{"两行弹幕第1行弹幕" , "两行弹幕第2行弹幕"};
                 baseDanmaku.setTime(mMainBinding.svDanmaku.getCurrentTime());// 弹幕出现的时间
                 runOnUiThread(new Runnable() {
