@@ -45,7 +45,6 @@ import master.flame.danmaku.danmaku.loader.android.DanmakuLoaderFactory;
 import master.flame.danmaku.danmaku.model.BaseDanmaku;
 import master.flame.danmaku.danmaku.model.DanmakuTimer;
 import master.flame.danmaku.danmaku.model.IDanmakus;
-import master.flame.danmaku.danmaku.model.IDisplayer;
 import master.flame.danmaku.danmaku.model.android.BaseCacheStuffer;
 import master.flame.danmaku.danmaku.model.android.DanmakuContext;
 import master.flame.danmaku.danmaku.model.android.Danmakus;
@@ -56,6 +55,7 @@ import master.flame.danmaku.danmaku.parser.android.BiliDanmukuParser;
 
 import static android.R.id.list;
 import static android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE;
+import static master.flame.danmaku.danmaku.model.IDisplayer.DANMAKU_STYLE_STROKEN;
 
 public class TextDanmakuActivity extends AppCompatActivity {
     private static final String TAG = TextDanmakuActivity.class.getSimpleName();
@@ -82,11 +82,12 @@ public class TextDanmakuActivity extends AppCompatActivity {
         overlappingEnablePair.put(BaseDanmaku.TYPE_FIX_TOP, true);
 
         mDanmakuContext = DanmakuContext.create();   // 创建弹幕所需的上下文信息
-        mDanmakuContext.setDanmakuStyle(IDisplayer.DANMAKU_STYLE_STROKEN, 3) // 弹幕样式
+        mDanmakuContext.setDanmakuStyle(DANMAKU_STYLE_STROKEN, 3) // 弹幕样式
                 .setDuplicateMergingEnabled(true)    // 合并重复弹幕
                 .setScrollSpeedFactor(1.5f)          // 滚动弹幕速度系数
                 .setScaleTextSize(0.8f)              // 弹幕文字大小
                 .setCacheStuffer(new BackgroundCacheStuffer(), mCacheStufferAdapter) // 缓存绘制
+                .setDanmakuStyle(DANMAKU_STYLE_STROKEN , 25)  // 设置弹幕样式
                 .setMaximumLines(maxLinesPair)       // 弹幕最大行数
                 .preventOverlapping(overlappingEnablePair); // 防止弹幕重叠
 
