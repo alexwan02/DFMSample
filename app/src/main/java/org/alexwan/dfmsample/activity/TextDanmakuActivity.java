@@ -124,6 +124,7 @@ public class TextDanmakuActivity extends AppCompatActivity {
             @Override
             public boolean onViewClick(IDanmakuView view) {
                 // 点击的弹幕
+
                 return false;
             }
 
@@ -131,7 +132,12 @@ public class TextDanmakuActivity extends AppCompatActivity {
             public boolean onDanmakuClick(IDanmakus danmakus) {
                 // 弹幕
                 Log.d("DFM", "onDanmakuClick danmakus size:" + danmakus.size());
-                return false;
+                BaseDanmaku baseDanmaku = danmakus.last();
+                if(baseDanmaku != null){
+                    baseDanmaku.textColor = Color.YELLOW;
+                    mMainBinding.svDanmaku.invalidateDanmaku(baseDanmaku , false);
+                }
+                return true;
             }
         });
 
@@ -155,6 +161,7 @@ public class TextDanmakuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //
                 BaseDanmaku baseDanmaku = mDanmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_FIX_BOTTOM);
+
                 baseDanmaku.text = "简单的一条弹幕" + System.nanoTime(); // 文本内容
                 baseDanmaku.textSize = 50f * (mParser.getDisplayer().getDensity() - 0.6f); // 字体大小
                 baseDanmaku.textColor = 16711680;         // 字体颜色
